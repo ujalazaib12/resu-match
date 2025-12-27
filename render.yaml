@@ -1,5 +1,4 @@
 services:
-  # Backend
   - type: web
     name: resumatch-backend
     env: node
@@ -10,20 +9,18 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: DATABASE_URL
-        fromDatabase:
-          name: resumatch-db
-          property: connectionString
       - key: PORT
         value: 10000
+      - key: DATABASE_URL
+        sync: false 
+      - key: JWT_SECRET
+        sync: false
 
-  # Frontend
-  - type: static
-    name: resumatch-frontend
-    env: static
+staticSites:
+  - name: resumatch-frontend
     rootDir: .
     buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
+    publishPath: dist
     routes:
       - type: rewrite
         source: /*
@@ -34,4 +31,3 @@ services:
           type: web
           name: resumatch-backend
           property: url
-
