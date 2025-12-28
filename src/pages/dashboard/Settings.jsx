@@ -443,11 +443,10 @@ const Settings = () => {
 					{/* Message */}
 					{message.text && (
 						<div
-							className={`mb-6 p-4 rounded-lg ${
-								message.type === "success"
+							className={`mb-6 p-4 rounded-lg ${message.type === "success"
 									? "bg-green-50 text-green-800 border border-green-200"
 									: "bg-red-50 text-red-800 border border-red-200"
-							}`}
+								}`}
 						>
 							{message.text}
 						</div>
@@ -463,11 +462,10 @@ const Settings = () => {
 										<button
 											key={tab.id}
 											onClick={() => setActiveTab(tab.id)}
-											className={`flex items-center gap-2 px-6 py-4 text-sm font-medium border-b-2 transition-colors ${
-												isActive
+											className={`flex items-center gap-2 px-6 py-4 text-sm font-medium border-b-2 transition-colors ${isActive
 													? "border-blue-600 text-blue-600"
 													: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-											}`}
+												}`}
 										>
 											<Icon size={18} />
 											{tab.label}
@@ -487,10 +485,7 @@ const Settings = () => {
 											<div className="w-24 h-24 rounded-full overflow-hidden bg-gray-100 border-2 border-white shadow-md">
 												{user?.profile_picture_url ? (
 													<img
-														src={`http://localhost:5000/${user.profile_picture_url.replace(
-															/\\/g,
-															"/"
-														)}`}
+														src={user.profile_picture_url}
 														alt="Profile"
 														className="w-full h-full object-cover"
 													/>

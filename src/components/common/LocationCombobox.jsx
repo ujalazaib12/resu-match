@@ -132,9 +132,8 @@ const LocationCombobox = ({
 	// Custom render function for location options
 	const renderLocationOption = (option, isSelected) => (
 		<div
-			className={`px-4 py-2.5 text-sm cursor-pointer hover:bg-blue-50 hover:text-blue-600 transition-colors flex items-center ${
-				isSelected ? "bg-blue-50 text-blue-600 font-medium" : "text-gray-700"
-			}`}
+			className={`px-4 py-2.5 rounded-lg text-sm cursor-pointer hover:bg-blue-50 hover:text-blue-600 transition-colors flex items-center ${isSelected ? "bg-blue-50 text-blue-600 font-medium" : "text-gray-700"
+				}`}
 		>
 			{option.type !== "special" && option.code && (
 				<img

@@ -103,7 +103,7 @@ const Dashboard = () => {
                             <div className="w-12 h-12 rounded-full bg-gray-300 overflow-hidden border-2 border-white">
                                 {user?.profile_picture_url ? (
                                     <img
-                                        src={`http://localhost:5000/${user.profile_picture_url.replace(/\\/g, '/')}`}
+                                        src={user.profile_picture_url}
                                         alt="Profile"
                                         className="w-full h-full object-cover"
                                     />
@@ -154,10 +154,10 @@ const Dashboard = () => {
                                             </div>
                                             <div>
                                                 <div className="flex items-center gap-2">
-                                                    <h3 className="font-semibold text-gray-900">{application.jobTitle}</h3>
-                                                    <span className="px-2 py-0.5 bg-blue-100 text-blue-600 text-xs rounded-full">Full Time</span>
+                                                    <h3 className="font-semibold text-gray-900 text-sm">{application.jobTitle}</h3>
+                                                    {/* <span className="px-2 py-0.5 bg-blue-100 text-blue-600 text-xs rounded-full">Full Time</span> */}
                                                 </div>
-                                                <div className="flex items-center gap-4 text-sm text-gray-500 mt-1">
+                                                <div className="flex items-center gap-4 text-xs text-gray-500 mt-1">
                                                     <span className="flex items-center gap-1"><FiMapPin size={12} /> {application.location || 'Remote'}</span>
                                                     <span>$50k-80k/month</span>
                                                 </div>

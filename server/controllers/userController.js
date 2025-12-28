@@ -425,6 +425,20 @@ const deleteUser = async (req, res) => {
     }
 };
 
+// Delete Resume
+const deleteResume = async (req, res) => {
+    try {
+        await pool.query(
+            'UPDATE users SET resume_url = NULL, skills = $1 WHERE id = $2',
+            [JSON.stringify({ primary: [], secondary: [], technical: [], soft: [], certifications: [], languages: [] }), req.user.id]
+        );
+        res.json({ message: 'Resume deleted successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
 module.exports = {
     registerUser,
     loginUser,
@@ -438,5 +452,6 @@ module.exports = {
     updateProfilePicture,
     deleteProfilePicture,
     uploadResume,
+    deleteResume,
     deleteUser
 };

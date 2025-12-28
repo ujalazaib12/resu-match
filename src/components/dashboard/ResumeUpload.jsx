@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import api from '../../services/api';
-import { FiUploadCloud, FiFileText, FiCheckCircle } from 'react-icons/fi';
+import { FiUploadCloud, FiFileText, FiCheckCircle, FiTrash2 } from 'react-icons/fi';
+
 
 const ResumeUpload = () => {
     const { user, updateUser } = useAuth();
@@ -38,6 +39,37 @@ const ResumeUpload = () => {
         }
     };
 
+    const handleDeleteResume = async () => {
+        if (!window.confirm("Are you sure you want to delete your resume? This will also clear extracted skills.")) return;
+
+        setUploading(true);
+        try {
+            await api.delete('/users/resume');
+
+            // Update local user state
+            updateUser({
+                ...user,
+                resume_url: null,
+                skills: {
+                    ...user.skills,
+                    primary: [],
+                    secondary: [],
+                    technical: [],
+                    soft: [],
+                    certifications: [],
+                    languages: []
+                }
+            });
+
+            setMessage({ type: 'success', text: 'Resume deleted successfully.' });
+        } catch (error) {
+            console.error('Delete resume error:', error);
+            setMessage({ type: 'error', text: 'Failed to delete resume.' });
+        } finally {
+            setUploading(false);
+        }
+    };
+
     // Safely access skills
     const skills = user?.skills?.primary ?
         (typeof user.skills.primary === 'string' ? JSON.parse(user.skills.primary) : user.skills.primary)
@@ -69,23 +101,37 @@ const ResumeUpload = () => {
                     <FiUploadCloud size={32} />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900">
-                    {uploading ? 'Processing Resume...' : 'Upload your Resume'}
+                    {uploading ? 'Processing...' : (user?.resume_url ? 'Replace Resume' : 'Upload your Resume')}
                 </h3>
                 <p className="text-gray-500 mt-2">
-                    Drop your PDF here or click to browse. We will extract skills automatically.
+                    {user?.resume_url
+                        ? 'Click or drop a new PDF to replace the current one.'
+                        : 'Drop your PDF here or click to browse. We will extract skills automatically.'}
                 </p>
             </div>
 
             {/* Current Stats */}
             <div className="mt-8 grid md:grid-cols-2 gap-6">
                 <div className="p-4 bg-gray-50 rounded-lg">
-                    <div className="flex items-center gap-3 mb-2">
-                        <FiFileText className="text-blue-600" />
-                        <h4 className="font-semibold text-gray-900">Current Resume</h4>
+                    <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center gap-3">
+                            <FiFileText className="text-blue-600" />
+                            <h4 className="font-semibold text-gray-900">Current Resume</h4>
+                        </div>
+                        {user?.resume_url && (
+                            <button
+                                onClick={handleDeleteResume}
+                                disabled={uploading}
+                                className="text-red-500 hover:text-red-700 p-1 rounded hover:bg-red-50 transition-colors"
+                                title="Delete Resume"
+                            >
+                                <FiTrash2 size={16} />
+                            </button>
+                        )}
                     </div>
                     {user?.resume_url ? (
                         <a
-                            href={`http://localhost:5000/${user.resume_url.replace(/\\/g, '/')}`}
+                            href={user.resume_url}
                             target="_blank"
                             rel="noreferrer"
                             className="text-blue-600 hover:underline text-sm truncate block"

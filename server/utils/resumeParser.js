@@ -1,4 +1,5 @@
 const fs = require('fs');
+const axios = require('axios');
 
 /**
  * Basic keyword list for skills extraction
@@ -82,10 +83,8 @@ const parseResume = async (filePath) => {
         let dataBuffer;
         if (filePath.startsWith('http')) {
             console.log("Fetching PDF from URL:", filePath);
-            const response = await fetch(filePath);
-            if (!response.ok) throw new Error(`Failed to fetch PDF: ${response.statusText}`);
-            const arrayBuffer = await response.arrayBuffer();
-            dataBuffer = Buffer.from(arrayBuffer);
+            const response = await axios.get(filePath, { responseType: 'arraybuffer' });
+            dataBuffer = Buffer.from(response.data);
         } else {
             dataBuffer = fs.readFileSync(filePath);
         }

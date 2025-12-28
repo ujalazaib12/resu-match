@@ -53,7 +53,7 @@ function AppContent() {
 	const hideFooter = isDashboard;
 
 	return (
-		<div className="app flex flex-col h-screen overflow-hidden bg-gray-50">
+		<div className="app flex flex-col h-screen overflow-hidden">
 			<Navbar />
 			<main
 				className={`flex-1 min-w-0 flex flex-col ${isDashboard ? "overflow-hidden" : "overflow-y-auto overflow-x-hidden"

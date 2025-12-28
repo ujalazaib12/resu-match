@@ -50,8 +50,8 @@ const CustomDropdown = ({
 			? filterOptions
 				? filterOptions(options, searchTerm)
 				: options.filter((opt) =>
-						opt.label.toLowerCase().includes(searchTerm.toLowerCase())
-				  )
+					opt.label.toLowerCase().includes(searchTerm.toLowerCase())
+				)
 			: options;
 
 	// Handle outside click to close dropdown
@@ -74,9 +74,8 @@ const CustomDropdown = ({
 	// Default option renderer
 	const defaultRenderOption = (option, isSelected) => (
 		<div
-			className={`px-4 py-2.5 text-sm cursor-pointer hover:bg-blue-50 hover:text-blue-600 transition-colors flex items-center ${
-				isSelected ? "bg-blue-50 text-blue-600 font-medium" : "text-gray-700"
-			}`}
+			className={`px-4 py-2.5 text-sm cursor-pointer rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors flex items-center ${isSelected ? "bg-blue-50 text-blue-600 font-medium" : "text-gray-700"
+				}`}
 		>
 			{option.icon && <span className="mr-3">{option.icon}</span>}
 			<span className="truncate flex-1">{option.label}</span>
@@ -111,9 +110,8 @@ const CustomDropdown = ({
 					{selectedOption ? selectedOption.label : placeholder}
 				</span>
 				<FiChevronDown
-					className={`text-gray-400 ml-2 transition-transform duration-200 ${
-						isOpen ? "rotate-180" : ""
-					}`}
+					className={`text-gray-400 ml-2 transition-transform duration-200 ${isOpen ? "rotate-180" : ""
+						}`}
 					size={16}
 				/>
 			</div>
@@ -126,7 +124,7 @@ const CustomDropdown = ({
 						animate={{ opacity: 1, y: 0, scaleY: 1 }}
 						exit={{ opacity: 0, y: 10, scaleY: 0.9 }}
 						transition={{ duration: 0.2 }}
-						className="absolute top-full left-0 mt-2 w-full bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50 origin-top flex flex-col"
+						className="absolute top-full left-0 mt-2 px-2 w-full bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50 origin-top flex flex-col"
 						style={{ maxHeight: `${maxHeight}px` }}
 					>
 						{/* Search Input (if enabled) */}
