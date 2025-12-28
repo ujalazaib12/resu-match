@@ -315,8 +315,8 @@ const Register = () => {
 			console.error(err);
 			setError(
 				err.response?.data?.message ||
-					err.message ||
-					"Failed to create account."
+				err.message ||
+				"Failed to create account."
 			);
 		} finally {
 			setLoading(false);
@@ -359,19 +359,18 @@ const Register = () => {
 							{step < currentStep ? <FiCheck size={16} /> : step}
 						</motion.div>
 						<span
-							className={`text-xs mt-2 font-medium hidden sm:block transition-colors duration-200 ${
-								step <= currentStep ? "text-blue-600" : "text-gray-400"
-							}`}
+							className={`text-xs mt-2 font-medium hidden sm:block transition-colors duration-200 ${step <= currentStep ? "text-blue-600" : "text-gray-400"
+								}`}
 						>
 							{step === 1
 								? "Basic"
 								: step === 2
-								? "Professional"
-								: step === 3
-								? "Skills"
-								: step === 4
-								? "Preferences"
-								: "Resume"}
+									? "Professional"
+									: step === 3
+										? "Skills"
+										: step === 4
+											? "Preferences"
+											: "Resume"}
 						</span>
 					</div>
 				))}
@@ -997,11 +996,10 @@ const Register = () => {
 							key={mode}
 							type="button"
 							onClick={() => handleArrayToggle("workMode", mode)}
-							className={`px-4 py-2 border rounded-lg text-sm ${
-								formData.workMode.includes(mode)
-									? "bg-blue-400 text-white border-blue-400"
-									: "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
-							}`}
+							className={`px-4 py-2 border rounded-lg text-sm ${formData.workMode.includes(mode)
+								? "bg-blue-400 text-white border-blue-400"
+								: "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
+								}`}
 						>
 							{mode}
 						</button>
@@ -1026,11 +1024,10 @@ const Register = () => {
 							key={type}
 							type="button"
 							onClick={() => handleArrayToggle("jobType", type)}
-							className={`px-4 py-2 border rounded-lg text-sm ${
-								formData.jobType.includes(type)
-									? "bg-blue-400 text-white border-blue-400"
-									: "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
-							}`}
+							className={`px-4 py-2 border rounded-lg text-sm ${formData.jobType.includes(type)
+								? "bg-blue-400 text-white border-blue-400"
+								: "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
+								}`}
 						>
 							{type}
 						</button>
@@ -1085,11 +1082,10 @@ const Register = () => {
 							key={size}
 							type="button"
 							onClick={() => handleArrayToggle("companySize", size)}
-							className={`px-4 py-2 border rounded-lg text-sm ${
-								formData.companySize.includes(size)
-									? "bg-blue-400 text-white border-blue-400"
-									: "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
-							}`}
+							className={`px-4 py-2 border rounded-lg text-sm ${formData.companySize.includes(size)
+								? "bg-blue-400 text-white border-blue-400"
+								: "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
+								}`}
 						>
 							{size}
 						</button>
@@ -1117,11 +1113,10 @@ const Register = () => {
 							key={industry}
 							type="button"
 							onClick={() => handleArrayToggle("preferredIndustries", industry)}
-							className={`px-4 py-2 border rounded-lg text-sm ${
-								formData.preferredIndustries.includes(industry)
-									? "bg-blue-400 text-white border-blue-400"
-									: "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
-							}`}
+							className={`px-4 py-2 border rounded-lg text-sm ${formData.preferredIndustries.includes(industry)
+								? "bg-blue-400 text-white border-blue-400"
+								: "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
+								}`}
 						>
 							{industry}
 						</button>
@@ -1197,7 +1192,7 @@ const Register = () => {
 	);
 
 	return (
-		<div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-12">
+		<div className="min-h-screen bg-gray-50 flex justify-center px-4 py-20">
 			<div className="max-w-4xl w-full">
 				<div className="bg-white p-8 rounded-xl shadow-lg">
 					{/* Header */}

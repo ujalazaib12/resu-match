@@ -33,7 +33,7 @@ const Login = () => {
 		} catch (err) {
 			setError(
 				err.response?.data?.message ||
-					"Failed to login. Please check your credentials."
+				"Failed to login. Please check your credentials."
 			);
 		} finally {
 			setLoading(false);
@@ -41,7 +41,7 @@ const Login = () => {
 	};
 
 	return (
-		<div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center px-4 py-6">
+		<div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center px-4 pt-24 pb-12">
 			<div className="max-w-md w-full">
 				<div className="bg-white rounded-2xl shadow-2xl p-8 animate-fadeIn">
 					{/* Header */}

@@ -52,7 +52,7 @@ const ResetPassword = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center px-4 py-12">
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center px-4 pt-24 pb-12">
             <div className="max-w-md w-full">
                 <div className="bg-white rounded-2xl shadow-2xl p-8 animate-fadeIn">
                     {/* Header */}

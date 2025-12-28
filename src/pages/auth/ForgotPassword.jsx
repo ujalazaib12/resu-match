@@ -26,7 +26,7 @@ const ForgotPassword = () => {
 		} catch (err) {
 			setError(
 				err.response?.data?.message ||
-					"Failed to send reset link. Please try again."
+				"Failed to send reset link. Please try again."
 			);
 		} finally {
 			setLoading(false);
@@ -39,7 +39,7 @@ const ForgotPassword = () => {
 	};
 
 	return (
-		<div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-12">
+		<div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 pt-24 pb-12">
 			<div className="max-w-md w-full">
 				<div className="bg-white p-8 rounded-xl shadow-lg">
 					<div className="mb-8 text-center">
