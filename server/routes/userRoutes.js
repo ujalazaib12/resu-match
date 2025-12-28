@@ -31,10 +31,11 @@ cloudinary.config({
 // Configure Multer to use Cloudinary
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
-    params: {
-        folder: 'resumatch_uploads',
-        allowed_formats: ['jpg', 'png', 'jpeg', 'pdf', 'doc', 'docx'],
-        resource_type: 'auto' // Important for PDFs
+    params: async (req, file) => {
+        return {
+            folder: 'resumatch_uploads',
+            resource_type: 'auto',
+        };
     },
 });
 
