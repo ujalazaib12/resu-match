@@ -79,7 +79,16 @@ const parseResume = async (filePath) => {
             throw new Error("Could not find getDocument in pdfjs-dist module. Keys: " + Object.keys(pdfjsModule));
         }
 
-        const dataBuffer = fs.readFileSync(filePath);
+        let dataBuffer;
+        if (filePath.startsWith('http')) {
+            console.log("Fetching PDF from URL:", filePath);
+            const response = await fetch(filePath);
+            if (!response.ok) throw new Error(`Failed to fetch PDF: ${response.statusText}`);
+            const arrayBuffer = await response.arrayBuffer();
+            dataBuffer = Buffer.from(arrayBuffer);
+        } else {
+            dataBuffer = fs.readFileSync(filePath);
+        }
 
         // Load PDF
         const loadingTask = getDocument({
